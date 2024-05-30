@@ -2,7 +2,7 @@ import { TextInput } from "./textinput"
 import { UsersList } from "./users";
 import { Filter } from "./filter";
 import { useDispatch} from "react-redux";
-import { fetchTasks,addUser,deleteUser } from "../redux/opertations";
+import { fetchTasks,addUser,deleteUser,loginUser } from "../redux/opertations";
 import { useState, useEffect,  } from "react";
 import { setFilter } from "../redux/userSlice";
 
@@ -18,7 +18,11 @@ export const App = () => {
     
 
        useEffect(() => {
-    dispatch(fetchTasks());
+            dispatch(loginUser());
+       }, [dispatch, refresh]);
+    
+    useEffect(() => {
+            dispatch(fetchTasks());
        }, [dispatch, refresh]);
     
 
@@ -42,7 +46,10 @@ export const App = () => {
 
     const onSubmit = event => {
         event.preventDefault();
-        dispatch(addUser({ name: name, phone: number }));
+        dispatch(loginUser({
+  
+}))
+        dispatch(addUser({ name: name, number: number }));
         setName()
         setNumber()
         setNameValue('')

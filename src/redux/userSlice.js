@@ -8,6 +8,7 @@ const initialState = {
   isRefreshing: false,
 };
 
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -38,11 +39,13 @@ const userSlice = createSlice({
             .addCase(addUser.pending, (state, action)=> {
                 state.isLoading = true;
             })
-            .addCase(addUser.fulfilled, (state, action)=> {
+          .addCase(addUser.fulfilled, (state, action) => {
+                state.items=[1,2]
                 state.isLoading = false;
                 state.error = null;
                 console.log(state.items)
-                state.items.push(action.payload);
+              state.items.push(action.payload);
+              console.log(state.items)
             })
             .addCase(addUser.rejected, (state, action)=> {
                 state.isLoading = false;

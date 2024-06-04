@@ -4,10 +4,11 @@ import { RegisterForm } from "../components/RegisterForm/RegisterForm";
 import { TextInput } from "../components/textinput"
 import { UsersList } from "../components/users";
 import { Filter } from "../components/filter";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { addUser,deleteUser,loginUser} from "../redux/opertations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { setFilter } from "../redux/userSlice";
+import { fetchTasks } from "../redux/opertations"
 
 export const Phonebok = () => {
 
@@ -18,6 +19,9 @@ export const Phonebok = () => {
     const [number, setNumber] = useState()
     const [refresh, setRefresh] = useState(false)
 
+    useEffect(() => {
+        dispatch(fetchTasks());
+    }, [dispatch]);
 
     const onChange = event => {
         event.preventDefault();
@@ -57,10 +61,6 @@ export const Phonebok = () => {
 
     return (
         <div>
-            
-            <RegisterForm/>
-            <LoginForm />
-            <Home/>
             <TextInput onSubmit={onSubmit} onChange={onChange} nameValue={nameValue} numberValue={numberValue}/>
             <Filter onChange={onChange}/>
             <UsersList onClick={onClick}/>

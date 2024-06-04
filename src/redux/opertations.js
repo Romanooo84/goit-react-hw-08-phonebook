@@ -33,8 +33,8 @@ export const loginUser = createAsyncThunk(
   async (text, thunkAPI) => {
     try {
     const response = await axios.post('/users/login', {
-      email: 'pisarski.roman@gmail.com',
-      password: 'GoIT12345'
+      email: text.email,
+      password: text.password
     }, {
       headers: {
         'Accept': '*/*',
@@ -42,7 +42,6 @@ export const loginUser = createAsyncThunk(
       }
     });
       setAuthHeader(response.data.token);
-      console.log(axios.defaults.headers.common)
     return response.data
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -75,7 +74,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/me');
+      const res = await axios.get('/contacts');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -88,6 +87,7 @@ export const fetchTasks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/contacts");
+      console.log(response.data)
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -99,7 +99,6 @@ export const addUser = createAsyncThunk(
   "user/addUser",
   async (text, thunkAPI) => {
     try {
-      console.log(text)
       const response = await axios.post("/contacts", text);
       return response.data;
     } catch (e) {

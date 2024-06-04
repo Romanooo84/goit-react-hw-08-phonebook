@@ -39,7 +39,7 @@ const userSlice = createSlice({
             .addCase(addUser.pending, (state, action)=> {
                 state.isLoading = true;
             })
-          .addCase(addUser.fulfilled, (state, action) => {
+            .addCase(addUser.fulfilled, (state, action) => {
                 state.items=[1,2]
                 state.isLoading = false;
                 state.error = null;
@@ -75,17 +75,12 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      /*.addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })*/
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;

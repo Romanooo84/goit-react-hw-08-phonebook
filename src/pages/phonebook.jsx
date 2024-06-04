@@ -1,17 +1,15 @@
 import { Home } from "pages/Home";
 import { LoginForm } from "../components/loginForm/LoginForm";
-import { RegisterForm } from "./RegisterForm/RegisterForm";
-import { AppBar } from "./AppBar/AppBar";
-import { useAuth } from "hooks/useAuth";
-import { TextInput } from "./textinput"
-import { UsersList } from "./users";
-import { Filter } from "./filter";
+import { RegisterForm } from "../components/RegisterForm/RegisterForm";
+import { TextInput } from "../components/textinput"
+import { UsersList } from "../components/users";
+import { Filter } from "../components/filter";
 import { useDispatch} from "react-redux";
-import { fetchTasks,addUser,deleteUser,loginUser, refreshUser } from "../redux/opertations";
-import { useState, useEffect,  } from "react";
+import { addUser,deleteUser,loginUser} from "../redux/opertations";
+import { useState } from "react";
 import { setFilter } from "../redux/userSlice";
 
-export const App = () => {
+export const Phonebok = () => {
 
     const dispatch = useDispatch();
     const [nameValue, setNameValue] = useState('');
@@ -20,16 +18,6 @@ export const App = () => {
     const [number, setNumber] = useState()
     const [refresh, setRefresh] = useState(false)
 
-    const { isRefreshing } = useAuth();
-
-    useEffect(() => {
-        dispatch(refreshUser());
-    }, [dispatch]);
-    
-    useEffect(() => {
-            dispatch(fetchTasks());
-       }, [dispatch, refresh]);
-    
 
     const onChange = event => {
         event.preventDefault();

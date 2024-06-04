@@ -1,10 +1,7 @@
-import { Home } from "pages/Home";
-import { LoginForm } from "../components/loginForm/LoginForm";
-import { RegisterForm } from "../components/RegisterForm/RegisterForm";
 import { TextInput } from "../components/textinput"
 import { UsersList } from "../components/users";
 import { Filter } from "../components/filter";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch} from "react-redux";
 import { addUser,deleteUser,loginUser} from "../redux/opertations";
 import { useState, useEffect } from "react";
 import { setFilter } from "../redux/userSlice";
@@ -22,6 +19,8 @@ export const Phonebok = () => {
     useEffect(() => {
         dispatch(fetchTasks());
     }, [dispatch]);
+
+   
 
     const onChange = event => {
         event.preventDefault();
@@ -56,6 +55,7 @@ export const Phonebok = () => {
 
     const onClick = event => {
         event.preventDefault();
+        console.log(event.target.parentNode.id)
         dispatch(deleteUser(event.target.parentNode.id));
     }
 

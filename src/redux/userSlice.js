@@ -40,7 +40,6 @@ const userSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(addUser.fulfilled, (state, action) => {
-                state.items=[1,2]
                 state.isLoading = false;
                 state.error = null;
                 console.log(state.items)

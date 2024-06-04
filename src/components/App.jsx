@@ -67,16 +67,32 @@ export const App = () => {
         dispatch(deleteUser(event.target.parentNode.id));
     }
 
-    return (
-        <div>
-            
-            <RegisterForm/>
-            <LoginForm />
-            <Home/>
-            <TextInput onSubmit={onSubmit} onChange={onChange} nameValue={nameValue} numberValue={numberValue}/>
-            <Filter onChange={onChange}/>
-            <UsersList onClick={onClick}/>
-
-        </div>
-    )
-}
+    return isRefreshing ? (
+        <b>Refreshing user...</b>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+              }
+            />
+            <Route
+              path="/tasks"
+              element={
+                <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+              }
+            />
+          </Route>
+        </Routes>
+      );
+    };
+    

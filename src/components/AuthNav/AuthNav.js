@@ -1,15 +1,16 @@
 import { NavLink } from 'react-router-dom';
+import { Box, Text} from '@chakra-ui/react';
 
 
 export const AuthNav = () => {
   return (
-    <div>
+    <Box display='flex' gap='10'>
       <NavLink  to="/goit-react-hw-08-phonebook/register">
-        Register
+        <Text fontSize='20px' color='red' fontFamily="Roboto">Register</Text>
       </NavLink>
       <NavLink to="/goit-react-hw-08-phonebook/login">
-        Log In
+        <Text fontSize='20px' color='red' fontFamily="Roboto">Log In</Text>
       </NavLink>
-    </div>
+    </Box>
   );
 };

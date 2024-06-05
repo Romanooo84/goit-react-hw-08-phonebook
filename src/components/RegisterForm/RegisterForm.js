@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/opertations';
+import { Button, Input, Text, Box } from "@chakra-ui/react"
+import { SiGnuprivacyguard } from "react-icons/si";
 
 
 export const RegisterForm = () => {
@@ -20,19 +22,21 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit} autoComplete="off">
+      <Box display='flex' mt={20} mb={4} gap='5'>
       <label >
-        Username
-        <input type="text" name="name" />
+        <Text fontSize='30px' color='red'>Username</Text>
+        <Input mt={0.5} type="text" name="name" borderColor='#59FCF1'/>
       </label>
       <label >
-        Email
-        <input type="email" name="email" />
+        <Text fontSize='30px' color='red'>Email</Text>
+       <Input mt={0.5} type="email" name="email" borderColor='#59FCF1' />
       </label>
       <label >
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
+        <Text fontSize='30px' color='red'>Password</Text>
+        <Input mt={0.5} type="password" name="password"  borderColor='#59FCF1'/>
+        </label>
+      </Box>
+      <Button colorScheme='red' color='red' variant='outline' size='md' type="submit" rightIcon={<SiGnuprivacyguard/>} >Register</Button>
     </form>
   );
 };

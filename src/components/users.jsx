@@ -1,6 +1,7 @@
 import { useSelector, } from "react-redux";
 import { getItems, getError, getIsLoading } from "../redux/selectror";
-import { Button } from "@chakra-ui/react"
+import { Button,Table, Thead, Tbody, Tr, Th, Td, TableContainer, } from "@chakra-ui/react"
+import { FaDeleteLeft } from "react-icons/fa6";
 
 
 export const UsersList = ({ onClick }) => {
@@ -19,15 +20,28 @@ export const UsersList = ({ onClick }) => {
     } 
     
 return (
-     <div>
+    <div>
+    <hr style={{ margin: '10px 0', border: 'none', borderBottom: '2px solid black' }} />
       {isLoading && <b>Loading contacts...</b>}
-      {error && <b>{error}</b>}
-      <div>{items && items.map((item) => (
-        <div id={item.id} key={item.id}>
-            <p>Name: {item.name}</p>
-            <p>Number: {item.number}</p>
-            <Button onClick={onClick} >Delete</Button>
-        </div>))}</div>
+        {error && <b>{error}</b>}
+        <TableContainer>
+            <Table variant='striped' colorScheme='teal' size='lg'>
+                <Thead>
+                    <Tr> 
+                        <Th fontSize='15px' color='red' fontFamily="Roboto">Name</Th> 
+                        <Th fontSize='15px' color='red' fontFamily="Roboto">Number</Th>
+                        <Th fontSize='15px' color='red' fontFamily="Roboto">Action</Th>
+                    </Tr>
+                </Thead>
+            <Tbody>{items && items.map((item) => (
+                <Tr id={item.id} key={item.id}>
+                        <Td fontSize='15px' color='red' fontFamily="Roboto">{item.name}</Td>
+                        <Td fontSize='15px' color='red' fontFamily="Roboto">{item.number}</Td>
+                        <Td><Button colorScheme='red' color='red' variant='shadow' size='md' type="submit" rightIcon={<FaDeleteLeft />} onClick={onClick}></Button></Td>
+                </Tr>
+                ))}</Tbody>
+            </Table>
+        </TableContainer>
     </div>
 )
 }

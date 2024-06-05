@@ -1,8 +1,10 @@
+import { Input, Text, Box } from "@chakra-ui/react"
+
 export const Filter = ({ onChange }) => {
     return (
-        <div>
-            <p>Filtr Contacts</p>
-            <input
+        <Box display='flex' flexDirection='column' mt='30' ml='4vw'>
+            <Text  fontSize='20px' color='red'>Filtr Contacts</Text>
+            <Input mt={0.5} maxWidth='300'
                     type="text"
                     name="filter"
                     id='id'
@@ -11,6 +13,6 @@ export const Filter = ({ onChange }) => {
                     required
                     onChange={onChange }
                 />
-        </div>
+        </Box>
     )
 }

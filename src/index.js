@@ -6,6 +6,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { ChakraProvider } from '@chakra-ui/react'
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families:  ['Roboto:400,700', 'sans-serif','Merienda:400,700', 'sans-serif']
+  }
+});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

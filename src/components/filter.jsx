@@ -4,7 +4,7 @@ export const Filter = ({ onChange }) => {
     return (
         <Box display='flex' flexDirection='column' mt='30' ml='4vw'>
             <Text  fontSize='20px' color='red'>Filtr Contacts</Text>
-            <Input mt={0.5} maxWidth='300'
+            <Input mt={0.5} maxWidth='210' borderColor='#59FCF1' borderWidth="2px"
                     type="text"
                     name="filter"
                     id='id'

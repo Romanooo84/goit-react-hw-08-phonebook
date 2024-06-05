@@ -37,7 +37,7 @@ return (
                 <Tr id={item.id} key={item.id}>
                         <Td fontSize='15px' color='red' fontFamily="Roboto">{item.name}</Td>
                         <Td fontSize='15px' color='red' fontFamily="Roboto">{item.number}</Td>
-                        <Td><Button colorScheme='red' color='red' variant='shadow' size='md' type="submit" rightIcon={<FaDeleteLeft />} onClick={onClick}></Button></Td>
+                        <Td><Button id={item.id}  colorScheme='red' color='red' variant='shadow' size='md' type="submit" rightIcon={<FaDeleteLeft />} onClick={onClick}></Button></Td>
                 </Tr>
                 ))}</Tbody>
             </Table>

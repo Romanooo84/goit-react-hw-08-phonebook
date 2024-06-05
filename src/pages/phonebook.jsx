@@ -55,8 +55,8 @@ export const Phonebok = () => {
 
     const onClick = event => {
         event.preventDefault();
-        console.log(event.target.parentNode.id)
-        dispatch(deleteUser(event.target.parentNode.id));
+        console.log(event.target.parentNode.parentNode.parentNode.id)
+        dispatch(deleteUser(event.target.parentNode.parentNode.parentNode.id));
     }
 
     return (

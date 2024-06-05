@@ -1,5 +1,6 @@
 import { useSelector, } from "react-redux";
 import { getItems, getError, getIsLoading } from "../redux/selectror";
+import { Button } from "@chakra-ui/react"
 
 
 export const UsersList = ({ onClick }) => {
@@ -25,7 +26,7 @@ return (
         <div id={item.id} key={item.id}>
             <p>Name: {item.name}</p>
             <p>Number: {item.number}</p>
-            <button onClick={onClick} >Delete</button>
+            <Button onClick={onClick} >Delete</Button>
         </div>))}</div>
     </div>
 )
